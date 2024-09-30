@@ -3,7 +3,9 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-
+h1 {
+	text-align: center;
+}
 header {
 	display: flex;
 	justify-content: space-between;
@@ -76,6 +78,7 @@ nav a:hover {
 	flex-direction: row;
 	width: fit-content;
 	text-align: center;
+	margin: auto;
 }
 
 .texts h2 {
