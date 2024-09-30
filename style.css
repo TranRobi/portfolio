@@ -57,4 +57,28 @@ nav a:hover {
 }
 .card {
 	margin: 5px;
+	margin: auto;
+}
+.members {
+	width: 80%;
+	margin: auto;
+	margin-top: 5px;
+	border: solid 1px black;
+	padding: 10px;
+}
+.pfp {
+	height: 300px;
+	width: 300px;
+	border-radius: 100%;
+	object-fit: cover;
+}
+.texts {
+	flex-direction: row;
+	width: fit-content;
+	text-align: center;
+}
+
+.texts h2 {
+	align-self: center;
+	margin-left: 1rem;
 }
