@@ -85,3 +85,7 @@ nav a:hover {
 	align-self: center;
 	margin-left: 1rem;
 }
+.desc {
+	width: 80%;
+	margin: auto;
+}
