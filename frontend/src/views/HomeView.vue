@@ -8,7 +8,7 @@
     class="min-h-screen bg-zinc-950 text-zinc-100 font-sans selection:bg-emerald-500 selection:text-white"
   >
     <!-- HERO SECTION -->
-    <section class="max-w-5xl mx-auto px-6 pt-32 pb-20 flex flex-col justify-center min-h-[70vh]">
+    <section class="max-w-5xl mx-auto px-6 pt-24 pb-20 flex flex-col justify-center min-h-[70vh]">
       <!-- Monospace eyebrow text -->
       <p class="text-emerald-400 font-mono text-sm md:text-base mb-4 tracking-wider uppercase">
         {{ $t('home.systemInit') }}
@@ -49,7 +49,7 @@
     </section>
 
     <!-- COMPETENCY GRID -->
-    <section class="max-w-5xl mx-auto px-6 pb-32">
+    <section class="max-w-5xl mx-auto px-6 pb-32 w-full overflow-hidden py-4">
       <!-- Grid layout: 1 column on mobile, 3 columns on desktop -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Card 1 -->
@@ -81,6 +81,35 @@
           <h3 class="text-xl font-bold mb-2 text-zinc-100">Web Architecture</h3>
           <p class="text-zinc-400 text-sm mb-4">Responsive dashboards and scalable backend APIs.</p>
           <p class="font-mono text-xs text-emerald-400">Vue 3, Tailwind, Node.js, Spring Boot</p>
+        </div>
+      </div>
+      <div
+        class="mt-6 flex w-[200%] animate-[marquee-lr_10s_linear_infinite] hover:[animation-play-state:paused]"
+      >
+        <!-- Content Block 1 -->
+        <div class="flex w-1/2 justify-around items-center">
+          <span class="text-xl font-bold">🚀 Fast</span>
+          <span class="text-xl font-bold">🔒 Secure</span>
+          <span class="text-xl font-bold">⚡️ Reliable</span>
+        </div>
+
+        <!-- Content Block 2 (Duplicate) -->
+        <div class="flex w-1/2 justify-around items-center">
+          <span class="text-xl font-bold">🚀 Fast</span>
+          <span class="text-xl font-bold">🔒 Secure</span>
+          <span class="text-xl font-bold">⚡️ Reliable</span>
+        </div>
+        <!-- Content Block 2 (Duplicate) -->
+        <div class="flex w-1/2 justify-around items-center">
+          <span class="text-xl font-bold">🚀 Fast</span>
+          <span class="text-xl font-bold">🔒 Secure</span>
+          <span class="text-xl font-bold">⚡️ Reliable</span>
+        </div>
+        <!-- Content Block 2 (Duplicate) -->
+        <div class="flex w-1/2 justify-around items-center">
+          <span class="text-xl font-bold">🚀 Fast</span>
+          <span class="text-xl font-bold">🔒 Secure</span>
+          <span class="text-xl font-bold">⚡️ Reliable</span>
         </div>
       </div>
     </section>

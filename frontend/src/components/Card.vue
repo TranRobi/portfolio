@@ -7,7 +7,7 @@ const props = defineProps({
 </script>
 <template>
   <article
-    class="transform hover:scale-110 flex flex-col border border-zinc-800 bg-zinc-900/40 p-6 md:p-8 rounded-lg hover:border-emerald-500/50 transition-colors group"
+    class="transform hover:scale-110 flex flex-col border border-zinc-800 bg-zinc-900/40 p-6 md:p-8 rounded-lg hover:border-emerald-500/50 transition-colors group m-4"
   >
     <div class="mb-4">
       <h2

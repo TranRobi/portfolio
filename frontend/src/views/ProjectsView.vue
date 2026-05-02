@@ -23,7 +23,7 @@ import Card from '@/components/Card.vue'
       </p>
 
       <!-- Projects Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="">
         <Card
           title="Industrial Systems Integration"
           desc="Automated a 6-axis industrial robotic arm synchronized with a secondary rotator plate.
@@ -31,7 +31,29 @@ import Card from '@/components/Card.vue'
               asynchronous hardware actuation."
           :tech="['Lua', 'Computer Vision', 'Multi-Axis Kinematics']"
         />
-        <Card />
+        <Card
+          title="RoboCup RMRC Autonomous Robot"
+          desc="Designed and programmed an autonomous robot for hazardous environment navigation over a 2-year competitive period.
+                Engineered custom 3D-printed chassis components in Fusion 360 and developed C++ control loops for obstacle avoidance and victim identification."
+          :tech="['Fusion 360', ' C++', 'Sensor Fusion', 'Rapid Prototyping']"
+        />
+        <Card
+          title="Bit-Level File Compressor"
+          desc="Built a custom file compressor utilizing the Huffman coding algorithm. Managed memory allocation, binary tree construction, and bit-level file I/O to achieve measurable compression ratios."
+          :tech="['C', 'Data structures', 'Algorithms']"
+        />
+        <Card
+          title="RoboCup RMRC Autonomous Robot"
+          desc="Designed and programmed an autonomous robot for hazardous environment navigation over a 2-year competitive period.
+                Engineered custom 3D-printed chassis components in Fusion 360 and developed C++ control loops for obstacle avoidance and victim identification."
+          :tech="['Fusion 360', ' C++, Sensor Fusion', 'Rapid Prototyping']"
+        />
+        <Card
+          title="RoboCup RMRC Autonomous Robot"
+          desc="Designed and programmed an autonomous robot for hazardous environment navigation over a 2-year competitive period.
+                Engineered custom 3D-printed chassis components in Fusion 360 and developed C++ control loops for obstacle avoidance and victim identification."
+          :tech="['Fusion 360', ' C++, Sensor Fusion', 'Rapid Prototyping']"
+        />
       </div>
     </div>
   </main>
