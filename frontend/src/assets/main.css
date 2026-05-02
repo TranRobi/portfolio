@@ -1,0 +1,18 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Define the utility class name (e.g., animate-pop) and its properties */
+  --animate-pop: pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+
+  /* Define the keyframes */
+  @keyframes pop {
+    0% {
+      opacity: 0;
+      transform: scale(0.2);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
