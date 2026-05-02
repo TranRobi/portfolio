@@ -1,10 +1,11 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Define the utility class name (e.g., animate-pop) and its properties */
+  /* Animation Utilities */
   --animate-pop: pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  --animate-marquee-lr: marquee-lr 10s linear infinite;
 
-  /* Define the keyframes */
+  /* Keyframes */
   @keyframes pop {
     0% {
       opacity: 0;
@@ -15,17 +16,7 @@
       transform: scale(1);
     }
   }
-}
 
-@theme {
-  /* Define the animation: 10s duration, linear speed (constant pace), looping infinitely */
-  --animate-marquee-lr: marquee-lr 10s linear infinite;
-
-  /* 
-    Because we will double the content (making it 200% wide), 
-    translating it by -50% shifts it exactly one "content block" to the left.
-    Moving it to 0% creates the left-to-right motion.
-  */
   @keyframes marquee-lr {
     0% {
       transform: translateX(-50%);
@@ -33,5 +24,61 @@
     100% {
       transform: translateX(0%);
     }
+  }
+}
+
+/* Component Classes */
+@layer components {
+  /* Extracted from Card.vue */
+  .project-card {
+    @apply transform hover:scale-[1.02] cursor-pointer flex flex-col border border-zinc-800 bg-zinc-900/40 p-6 md:p-8 rounded-lg hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/10 transition-all duration-300 group;
+  }
+
+  .tech-tag {
+    @apply px-2 py-1 bg-zinc-950 border border-zinc-800 text-xs text-emerald-400 rounded-md font-mono;
+  }
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(16, 185, 129, 0.65) rgba(24, 24, 27, 0.9);
+    scroll-behavior: smooth;
+  }
+
+  /* Chrome / Edge / Safari */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(24, 24, 27, 0.95);
+    border-radius: 9999px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(16, 185, 129, 0.85), rgba(5, 150, 105, 0.75));
+    border-radius: 9999px;
+    border: 2px solid rgba(24, 24, 27, 0.95);
+    transition: background 0.25s ease;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgba(52, 211, 153, 0.95), rgba(16, 185, 129, 0.9));
+  }
+}
+
+/* Utility Classes */
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(24, 24, 27, 0.5); /* zinc-900 */
+    border-radius: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(16, 185, 129, 0.3); /* emerald-500/30 */
+    border-radius: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(16, 185, 129, 0.5); /* emerald-500/50 */
   }
 }
