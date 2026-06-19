@@ -12,19 +12,20 @@ type Status = 'idle' | 'sending' | 'success' | 'error'
 const status = ref<Status>('idle')
 const errorMsg = ref('')
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL ?? 'http://localhost:3001'
+const FORMSPREE_URL = import.meta.env.VITE_FORMSPREE_URL
 
 const submit = async () => {
   if (!form.name || !form.email || !form.message) return
   status.value = 'sending'
   errorMsg.value = ''
   try {
-    const res = await fetch(`${BACKEND_URL}/api/contact`, {
+    const res = await fetch(FORMSPREE_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify({ ...form }),
     })
-    if (!res.ok) throw new Error(`Server responded with ${res.status}`)
+    const data = await res.json()
+    if (!res.ok) throw new Error(data?.errors?.[0]?.message ?? `Error ${res.status}`)
     status.value = 'success'
     form.name = ''
     form.email = ''
