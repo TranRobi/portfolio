@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
-import SkillsView from '@/views/SkillsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,9 +17,12 @@ const router = createRouter({
     {
       path: '/projects',
       name: 'projects',
-      // Lazy-loading: this file is only downloaded when the user clicks the button!
-      // This makes your initial page load incredibly fast.
       component: () => import('../views/ProjectsView.vue'),
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: () => import('../views/ContactView.vue'),
     },
   ],
 })

@@ -1,0 +1,11 @@
+Drop your images for the "RoboCup RMRC Autonomous Robot" project here.
+
+Suggested filenames:
+- photo1.jpg
+- photo2.jpg
+
+Then in projects.json update:
+  "images": [
+    "/projects/robocup/photo1.jpg",
+    "/projects/robocup/photo2.jpg"
+  ]

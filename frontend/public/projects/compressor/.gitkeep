@@ -1,0 +1,11 @@
+Drop your images for the "Bit-Level Text File Compressor" project here.
+
+Suggested filenames:
+- screenshot1.png
+- screenshot2.png
+
+Then in projects.json update:
+  "images": [
+    "/projects/compressor/screenshot1.png",
+    "/projects/compressor/screenshot2.png"
+  ]

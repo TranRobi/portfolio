@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-import { useI18n } from 'vue-i18n' // Import the i18n tools
+import { useI18n } from 'vue-i18n'
 
-// Extract the locale variable so we can change it
 const { locale } = useI18n()
 
-// Function to swap languages
 const toggleLanguage = () => {
   locale.value = locale.value === 'en' ? 'hu' : 'en'
 }
@@ -24,7 +22,6 @@ const toggleLanguage = () => {
       </RouterLink>
 
       <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-        <!-- Notice how we replace the hardcoded text with $t('key') -->
         <RouterLink
           to="/projects"
           class="text-zinc-400 hover:text-zinc-100 transition-colors"
@@ -39,6 +36,13 @@ const toggleLanguage = () => {
         >
           {{ $t('nav.matrix') }}
         </RouterLink>
+        <RouterLink
+          to="/contact"
+          class="text-zinc-400 hover:text-zinc-100 transition-colors"
+          active-class="text-emerald-400"
+        >
+          {{ $t('nav.contact') }}
+        </RouterLink>
         <a
           href="/resume.pdf"
           target="_blank"
@@ -47,7 +51,6 @@ const toggleLanguage = () => {
           {{ $t('nav.resume') }}
         </a>
 
-        <!-- THE LANGUAGE TOGGLE BUTTON -->
         <button
           @click="toggleLanguage"
           class="text-zinc-400 ml-4 px-2 py-1 border border-zinc-700 rounded text-xs font-mono hover:border-emerald-500 hover:text-emerald-400 transition-colors uppercase"

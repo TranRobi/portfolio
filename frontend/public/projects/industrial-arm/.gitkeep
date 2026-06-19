@@ -1,0 +1,13 @@
+Drop your images for the "Industrial Systems Integration" project here.
+
+Suggested filenames:
+- slide1.jpg
+- slide2.jpg
+- slide3.jpg
+
+Then in projects.json update:
+  "images": [
+    "/projects/industrial-arm/slide1.jpg",
+    "/projects/industrial-arm/slide2.jpg",
+    "/projects/industrial-arm/slide3.jpg"
+  ]

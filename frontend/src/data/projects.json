@@ -5,7 +5,7 @@
     "desc": "Automated a 6-axis industrial robotic arm synchronized with a secondary rotator plate. Integrated an image recognition camera to process visual data and trigger precise, asynchronous hardware actuation.",
     "tech": ["Lua", "Computer Vision", "Multi-Axis Kinematics"],
     "images": [
-      "https://picsum.photos/seed/robot1/800/400",
+      "/projects/industrial-arm/p1.png",
       "https://picsum.photos/seed/robot2/800/400",
       "https://picsum.photos/seed/robot3/800/400"
     ],
@@ -15,7 +15,8 @@
       "State base operation",
       "Emergency stops",
       "Human-Robot operations"
-    ]
+    ],
+    "site": []
   },
   {
     "id": 2,
@@ -31,7 +32,10 @@
       "AI Hazard recognition",
       "3D modelling",
       "Controllable robot arm"
-    ]
+    ],
+    "site": [
+    "https://tranrobi.github.io/KokanyCorporation_Updated_TDM/"
+  ]
   },
   {
     "id": 3,
@@ -42,6 +46,7 @@
       "https://picsum.photos/seed/code1/800/400",
       "https://picsum.photos/seed/code2/800/400"
     ],
-    "features": ["Encoding a text file", "Decoding a text file", "CLI menu for the user"]
+    "features": ["Encoding a text file", "Decoding a text file", "CLI menu for the user"],
+    "site": []
   }
 ]

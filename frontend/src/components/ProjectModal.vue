@@ -8,6 +8,7 @@ interface Project {
   tech: string[]
   images: string[]
   features: string[]
+  site: string[]
 }
 
 const props = defineProps<{
@@ -62,14 +63,11 @@ const prevSlide = () => {
     leave-to-class="opacity-0"
   >
     <div v-if="project" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
-      <!-- Backdrop -->
       <div class="absolute inset-0 bg-zinc-950/85 backdrop-blur-md" @click="closeModal"></div>
 
-      <!-- Modal -->
       <div
         class="relative w-full max-w-4xl bg-zinc-900/95 border border-emerald-500/20 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]"
       >
-        <!-- Close -->
         <button
           @click="closeModal"
           class="absolute top-4 right-4 z-20 p-2 bg-zinc-950/70 hover:bg-zinc-800 rounded-full text-zinc-300 hover:text-emerald-400 transition"
@@ -78,7 +76,6 @@ const prevSlide = () => {
         </button>
 
         <div class="overflow-y-auto custom-scrollbar scroll-smooth">
-          <!-- Hero Slider -->
           <div class="relative w-full aspect-video bg-black overflow-hidden group">
             <img
               :src="project.images[currentSlide]"
@@ -86,12 +83,10 @@ const prevSlide = () => {
               class="w-full h-full object-cover transition-all duration-700 scale-100 group-hover:scale-105"
             />
 
-            <!-- Gradient overlay -->
             <div
               class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent"
             ></div>
 
-            <!-- Arrows -->
             <button
               @click="prevSlide"
               class="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-zinc-950/60 hover:bg-emerald-500 hover:text-black rounded-full text-xl backdrop-blur-md transition-all"
@@ -106,14 +101,12 @@ const prevSlide = () => {
               →
             </button>
 
-            <!-- Slide Counter -->
             <div
               class="absolute bottom-4 right-4 px-3 py-1 bg-zinc-950/70 text-sm text-emerald-400 rounded-full font-mono backdrop-blur-md"
             >
               {{ currentSlide + 1 }} / {{ project.images.length }}
             </div>
 
-            <!-- Dots -->
             <div class="absolute bottom-4 left-4 flex gap-2">
               <button
                 v-for="(img, idx) in project.images"
@@ -125,7 +118,6 @@ const prevSlide = () => {
             </div>
           </div>
 
-          <!-- Content -->
           <div class="p-6 md:p-8">
             <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
               {{ project.title }}
@@ -144,7 +136,29 @@ const prevSlide = () => {
                 {{ t }}
               </span>
             </div>
-            <!-- Key features -->
+
+            <div v-if="project.site && project.site.length > 0" class="mt-8">
+              <h3 class="text-sm font-mono uppercase tracking-widest text-zinc-500 mb-3">Live Demo</h3>
+              <div class="flex flex-wrap gap-3">
+                <a
+                  v-for="(url, idx) in project.site"
+                  :key="idx"
+                  :href="url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-sm hover:bg-emerald-500/20 hover:border-emerald-400/60 hover:shadow-lg hover:shadow-emerald-900/30 transition-all duration-300"
+                >
+                  <svg class="w-4 h-4 flex-shrink-0 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                  </svg>
+                  <span>{{ url.replace(/https?:\/\//, '') }}</span>
+                  <svg class="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
             <div class="mt-10">
               <h3 class="text-2xl md:text-3xl font-bold text-white mb-6 tracking-tight">
                 Key Features
@@ -156,14 +170,12 @@ const prevSlide = () => {
                   :key="index"
                   class="group flex items-start gap-4 p-5 rounded-2xl border border-zinc-800 bg-zinc-950/70 hover:border-emerald-500/40 hover:shadow-xl hover:shadow-emerald-900/10 transition-all duration-300"
                 >
-                  <!-- Numbered Badge -->
                   <div
                     class="flex items-center justify-center w-10 h-10 rounded-xl bg-zinc-900 border border-emerald-500/30 text-emerald-400 font-mono font-bold text-sm shadow-md shadow-emerald-900/20 group-hover:scale-110 group-hover:border-emerald-400/60 transition-all duration-300"
                   >
                     {{ String(index + 1).padStart(2, '0') }}
                   </div>
 
-                  <!-- Feature Text -->
                   <div class="flex-1">
                     <p class="text-zinc-100 font-medium leading-relaxed">
                       {{ feature }}
@@ -172,7 +184,7 @@ const prevSlide = () => {
                 </li>
               </ul>
             </div>
-            <!-- Social Icons -->
+
             <div
               class="border-t border-zinc-800 pt-6 flex items-center justify-center gap-8 text-zinc-400"
             >
@@ -195,7 +207,6 @@ const prevSlide = () => {
                 </span>
               </a>
 
-              <!-- GitHub -->
               <a
                 href="https://github.com/TranRobi"
                 target="_blank"
@@ -214,7 +225,6 @@ const prevSlide = () => {
                 </span>
               </a>
 
-              <!-- CV -->
               <a
                 href="/cv.pdf"
                 target="_blank"
