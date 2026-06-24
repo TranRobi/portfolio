@@ -33,9 +33,7 @@
       "3D modelling",
       "Controllable robot arm"
     ],
-    "site": [
-    "https://tranrobi.github.io/KokanyCorporation_Updated_TDM/"
-  ]
+    "site": ["https://tranrobi.github.io/KokanyCorporation_Updated_TDM/"]
   },
   {
     "id": 3,
@@ -48,5 +46,38 @@
     ],
     "features": ["Encoding a text file", "Decoding a text file", "CLI menu for the user"],
     "site": []
+  },
+  {
+    "id": 4,
+    "title": "Digital RecipeBook",
+    "desc": "A Digital RecipeBook. Basic add, remove, edit, a recipe. The recipe book has a function which gives a user a suggestion by the user custom choices.",
+    "tech": ["C++", "Data structures", "Algorithms"],
+    "images": [
+      "https://picsum.photos/seed/code1/800/400",
+      "https://picsum.photos/seed/code2/800/400"
+    ],
+    "features": [
+      "Encoding a text file",
+      "Decoding a text file",
+      "CLI menu for the user",
+      "Data structures",
+      "3 text database implementation"
+    ],
+    "site": []
+  },
+  {
+    "id": 5,
+    "title": "Call Center state website",
+    "desc": "A website which stores the states of the call and let the user know which numbers to call back. I was responsible for the frontend site of the projects, which interact with the user. We did a Login and authentication service in the site.",
+    "tech": ["React", "Node", "MySQL database"],
+    "images": [
+      "https://picsum.photos/seed/code1/800/400",
+      "https://picsum.photos/seed/code2/800/400"
+    ],
+    "features": [
+      "authenticate Login",
+      "Shows the state of the numbers"
+    ],
+    "site": ["https://github.com/zsoltiv/techbase_contact"]
   }
 ]
