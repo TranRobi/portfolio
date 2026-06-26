@@ -12,7 +12,7 @@ type Status = 'idle' | 'sending' | 'success' | 'error'
 const status = ref<Status>('idle')
 const errorMsg = ref('')
 
-const FORMSPREE_URL = import.meta.env.VITE_FORMSPREE_URL
+const FORMSPREE_URL = import.meta.env.VITE_FORMSPREE_URL || 'https://formspree.io/f/xqeorbzk'
 
 const submit = async () => {
   if (!form.name || !form.email || !form.message) return
