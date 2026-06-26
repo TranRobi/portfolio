@@ -281,7 +281,7 @@ onUnmounted(() => {
 
                   <!-- CV -->
                   <a
-                    href="/cv.pdf"
+                    href="/resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="group flex flex-col items-center gap-1.5 hover:text-emerald-400 transition-colors"
