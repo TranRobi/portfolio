@@ -52,16 +52,17 @@ const reset = () => {
         to="/"
         class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-mono text-sm mb-10 transition-colors"
       >
-        <span aria-hidden="true">←</span> {{ $t('contact.returnMain') }}
+        <span aria-hidden="true">←</span> Return to Main System
       </RouterLink>
 
       <!-- Header -->
       <p class="text-emerald-400 font-mono text-sm uppercase tracking-widest mb-3">
-        {{ $t('contact.openChannel') }}
+        // Open Channel
       </p>
-      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-3">{{ $t('contact.title') }}</h1>
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-3">Contact</h1>
       <p class="text-zinc-400 text-lg mb-12 max-w-xl leading-relaxed">
-        {{ $t('contact.subtitle') }}
+        Have a project, collaboration, or question? Drop a message and I'll get back to you as
+        soon as possible.
       </p>
 
       <!-- ── SUCCESS STATE ── -->
@@ -87,14 +88,14 @@ const reset = () => {
             </svg>
           </div>
           <div>
-            <p class="text-xl font-bold text-white">{{ $t('contact.successTitle') }}</p>
-            <p class="text-zinc-400 mt-1 text-sm">{{ $t('contact.successSubtitle') }}</p>
+            <p class="text-xl font-bold text-white">Message transmitted.</p>
+            <p class="text-zinc-400 mt-1 text-sm">I'll get back to you soon.</p>
           </div>
           <button
             @click="reset"
             class="mt-2 px-6 py-2.5 rounded-xl bg-zinc-900 border border-zinc-700 text-sm font-mono text-zinc-300 hover:border-emerald-500/50 hover:text-emerald-400 transition-all"
           >
-            {{ $t('contact.btnSendAnother') }}
+            Send another
           </button>
         </div>
       </Transition>
@@ -109,14 +110,14 @@ const reset = () => {
           <!-- Name -->
           <div class="flex flex-col gap-2">
             <label for="contact-name" class="text-xs font-mono uppercase tracking-widest text-zinc-500"
-              >{{ $t('contact.labelName') }}</label
+              >Name</label
             >
             <input
               id="contact-name"
               v-model="form.name"
               type="text"
               required
-              :placeholder="$t('contact.placeholderName')"
+              placeholder="Your name"
               class="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-100 placeholder-zinc-600 font-mono text-sm focus:outline-none focus:border-emerald-500/60 focus:shadow-[0_0_0_3px_rgba(16,185,129,0.1)] transition-all"
             />
           </div>
@@ -124,14 +125,14 @@ const reset = () => {
           <!-- Email -->
           <div class="flex flex-col gap-2">
             <label for="contact-email" class="text-xs font-mono uppercase tracking-widest text-zinc-500"
-              >{{ $t('contact.labelEmail') }}</label
+              >Email</label
             >
             <input
               id="contact-email"
               v-model="form.email"
               type="email"
               required
-              :placeholder="$t('contact.placeholderEmail')"
+              placeholder="your@email.com"
               class="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-100 placeholder-zinc-600 font-mono text-sm focus:outline-none focus:border-emerald-500/60 focus:shadow-[0_0_0_3px_rgba(16,185,129,0.1)] transition-all"
             />
           </div>
@@ -139,14 +140,14 @@ const reset = () => {
           <!-- Message -->
           <div class="flex flex-col gap-2">
             <label for="contact-message" class="text-xs font-mono uppercase tracking-widest text-zinc-500"
-              >{{ $t('contact.labelMessage') }}</label
+              >Message</label
             >
             <textarea
               id="contact-message"
               v-model="form.message"
               required
               rows="6"
-              :placeholder="$t('contact.placeholderMessage')"
+              placeholder="Describe your project or question..."
               class="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-100 placeholder-zinc-600 font-mono text-sm resize-none focus:outline-none focus:border-emerald-500/60 focus:shadow-[0_0_0_3px_rgba(16,185,129,0.1)] transition-all"
             ></textarea>
           </div>
@@ -158,7 +159,7 @@ const reset = () => {
             enter-to-class="opacity-100 translate-y-0"
           >
             <p v-if="status === 'error'" class="text-sm font-mono text-red-400">
-              {{ $t('contact.error', { error: errorMsg }) }}
+              ⚠ Transmission failed: {{ errorMsg }}. Try again or email me directly.
             </p>
           </Transition>
 
@@ -194,7 +195,7 @@ const reset = () => {
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
               />
             </svg>
-            <span>{{ status === 'sending' ? $t('contact.btnSending') : $t('contact.btnSend') }}</span>
+            <span>{{ status === 'sending' ? 'Transmitting...' : 'Send Message' }}</span>
             <!-- Arrow icon -->
             <svg
               v-if="status !== 'sending'"

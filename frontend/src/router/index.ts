@@ -12,22 +12,22 @@ const router = createRouter({
     {
       path: '/skills',
       name: 'skill',
-      component: () => import('../views/SkillsView.vue'),
+      component: () => import('@/views/SkillsView.vue'),
     },
     {
       path: '/projects',
       name: 'projects',
-      component: () => import('../views/ProjectsView.vue'),
+      component: () => import('@/views/ProjectsView.vue'),
     },
     {
       path: '/contact',
       name: 'contact',
-      component: () => import('../views/ContactView.vue'),
+      component: () => import('@/views/ContactView.vue'),
     },
     {
       path: '/about',
       name: 'about',
-      component: () => import('../views/AboutView.vue'),
+      component: () => import('@/views/AboutView.vue'),
     },
   ],
 })
