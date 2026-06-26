@@ -30,9 +30,9 @@ const submit = async () => {
     form.name = ''
     form.email = ''
     form.message = ''
-  } catch (e: any) {
+  } catch (e) {
     status.value = 'error'
-    errorMsg.value = e.message ?? 'Unknown error'
+    errorMsg.value = e instanceof Error ? e.message : 'Unknown error'
   }
 }
 
