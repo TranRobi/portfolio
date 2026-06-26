@@ -1,7 +1,13 @@
 <script setup lang="ts">
 const props = defineProps({
-  title: String,
-  desc: String,
+  titleKey: {
+    type: String,
+    required: true,
+  },
+  descKey: {
+    type: String,
+    required: true,
+  },
   tech: Array,
 })
 
@@ -17,10 +23,10 @@ defineEmits(['open'])
       <h2
         class="text-2xl font-bold text-zinc-100 mb-2 group-hover:text-emerald-400 transition-colors"
       >
-        {{ title }}
+        {{ $t(titleKey) }}
       </h2>
       <p class="text-zinc-400 text-sm leading-relaxed line-clamp-3">
-        {{ desc }}
+        {{ $t(descKey) }}
       </p>
     </div>
 
@@ -38,7 +44,9 @@ defineEmits(['open'])
       </span>
     </div>
     <div class="mt-4">
-      <p class="text-zinc-400 hover:text-white transition text-sm w-fit">Click for more</p>
+      <p class="text-zinc-400 hover:text-white transition text-sm w-fit">
+        {{ $t('projects.clickForMore') }}
+      </p>
     </div>
   </article>
 </template>

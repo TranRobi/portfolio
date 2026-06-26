@@ -1,83 +1,63 @@
 [
   {
     "id": 1,
-    "title": "Industrial Systems Integration",
-    "desc": "Automated a 6-axis industrial robotic arm synchronized with a secondary rotator plate. Integrated an image recognition camera to process visual data and trigger precise, asynchronous hardware actuation.",
+    "titleKey": "projects.p1.title",
+    "descKey": "projects.p1.desc",
     "tech": ["Lua", "Computer Vision", "Multi-Axis Kinematics"],
     "images": [
       "/projects/industrial-arm/p1.png",
       "https://picsum.photos/seed/robot2/800/400",
       "https://picsum.photos/seed/robot3/800/400"
     ],
-    "features": [
-      "Image recognition",
-      "Robot arm movement",
-      "State base operation",
-      "Emergency stops",
-      "Human-Robot operations"
-    ],
+    "featuresKey": "projects.p1.features",
     "site": []
   },
   {
     "id": 2,
-    "title": "RoboCup RMRC Autonomous Robot",
-    "desc": "Designed and programmed an autonomous robot for hazardous environment navigation over a 2-year competitive period. Engineered custom 3D-printed chassis components in Fusion 360 and developed C++ control loops for obstacle avoidance and victim identification.",
+    "titleKey": "projects.p2.title",
+    "descKey": "projects.p2.desc",
     "tech": ["Fusion 360", "C++", "Sensor Fusion", "Rapid Prototyping"],
     "images": [
       "https://picsum.photos/seed/auto1/800/400",
       "https://picsum.photos/seed/auto2/800/400"
     ],
-    "features": [
-      "QR code reader",
-      "AI Hazard recognition",
-      "3D modelling",
-      "Controllable robot arm"
-    ],
+    "featuresKey": "projects.p2.features",
     "site": ["https://tranrobi.github.io/KokanyCorporation_Updated_TDM/"]
   },
   {
     "id": 3,
-    "title": "Bit-Level Text File Compressor",
-    "desc": "Built a custom text file compressor utilizing the Huffman coding algorithm. Managed memory allocation, binary tree construction, and bit-level file I/O to achieve measurable compression ratios.",
+    "titleKey": "projects.p3.title",
+    "descKey": "projects.p3.desc",
     "tech": ["C", "Data structures", "Algorithms"],
     "images": [
       "https://picsum.photos/seed/code1/800/400",
       "https://picsum.photos/seed/code2/800/400"
     ],
-    "features": ["Encoding a text file", "Decoding a text file", "CLI menu for the user"],
+    "featuresKey": "projects.p3.features",
     "site": []
   },
   {
     "id": 4,
-    "title": "Digital RecipeBook",
-    "desc": "A Digital RecipeBook. Basic add, remove, edit, a recipe. The recipe book has a function which gives a user a suggestion by the user custom choices.",
+    "titleKey": "projects.p4.title",
+    "descKey": "projects.p4.desc",
     "tech": ["C++", "Data structures", "Algorithms"],
     "images": [
       "https://picsum.photos/seed/code1/800/400",
       "https://picsum.photos/seed/code2/800/400"
     ],
-    "features": [
-      "Encoding a text file",
-      "Decoding a text file",
-      "CLI menu for the user",
-      "Data structures",
-      "3 text database implementation"
-    ],
+    "featuresKey": "projects.p4.features",
     "site": []
   },
   {
     "id": 5,
-    "title": "Call Center state website",
-    "desc": "A website which stores the states of the call and let the user know which numbers to call back. I was responsible for the frontend site of the projects, which interact with the user. We did a Login and authentication service in the site.",
+    "titleKey": "projects.p5.title",
+    "descKey": "projects.p5.desc",
     "tech": ["React", "Node", "MySQL database"],
     "images": [
       "https://picsum.photos/seed/code1/800/400",
       "https://picsum.photos/seed/code2/800/400"
     ],
-    "features": [
-      "authenticate Login",
-      "Shows the state of the numbers"
-    ],
+    "featuresKey": "projects.p5.features",
     "site": ["https://github.com/zsoltiv/techbase_contact"]
   }
 ]

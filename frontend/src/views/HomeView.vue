@@ -35,7 +35,7 @@
           target="_blank"
           class="px-8 py-3 bg-zinc-900 text-zinc-100 font-bold rounded-md border border-zinc-800 hover:border-zinc-600 transition-colors text-center"
         >
-          Download Resume
+          {{ $t('home.btnResume') }}
         </a>
       </div>
     </section>
@@ -45,9 +45,9 @@
         <div
           class="bg-zinc-900/50 border border-zinc-800 p-6 rounded-lg hover:border-emerald-500/50 transition-colors"
         >
-          <h3 class="text-xl font-bold mb-2 text-zinc-100">Low-Level Systems</h3>
+          <h3 class="text-xl font-bold mb-2 text-zinc-100">{{ $t('home.categories.lowlevel.title') }}</h3>
           <p class="text-zinc-400 text-sm mb-4">
-            Memory management, algorithms, and logic execution.
+            {{ $t('home.categories.lowlevel.desc') }}
           </p>
           <p class="font-mono text-xs text-emerald-400">C, C++, Lua</p>
         </div>
@@ -55,9 +55,9 @@
         <div
           class="bg-zinc-900/50 border border-zinc-800 p-6 rounded-lg hover:border-emerald-500/50 transition-colors"
         >
-          <h3 class="text-xl font-bold mb-2 text-zinc-100">Robotics & Hardware</h3>
+          <h3 class="text-xl font-bold mb-2 text-zinc-100">{{ $t('home.categories.robotics.title') }}</h3>
           <p class="text-zinc-400 text-sm mb-4">
-            Industrial automation, sensor fusion, and rapid prototyping.
+            {{ $t('home.categories.robotics.desc') }}
           </p>
           <p class="font-mono text-xs text-emerald-400">Fusion 360, Computer Vision, RMRC</p>
         </div>
@@ -65,35 +65,45 @@
         <div
           class="bg-zinc-900/50 border border-zinc-800 p-6 rounded-lg hover:border-emerald-500/50 transition-colors"
         >
-          <h3 class="text-xl font-bold mb-2 text-zinc-100">Web Architecture</h3>
-          <p class="text-zinc-400 text-sm mb-4">Responsive dashboards and scalable backend APIs.</p>
+          <h3 class="text-xl font-bold mb-2 text-zinc-100">{{ $t('home.categories.web.title') }}</h3>
+          <p class="text-zinc-400 text-sm mb-4">{{ $t('home.categories.web.desc') }}</p>
           <p class="font-mono text-xs text-emerald-400">Vue 3, Tailwind, Node.js, Spring Boot</p>
         </div>
       </div>
 
-      <!-- marquee: 4 duplicates needed for seamless loop -->
-      <div
-        class="mt-6 flex w-[200%] animate-[marquee-lr_10s_linear_infinite] hover:[animation-play-state:paused]"
-      >
-        <div class="flex w-1/2 justify-around items-center">
-          <span class="text-xl font-bold">🚀 Fast</span>
-          <span class="text-xl font-bold">🔒 Secure</span>
-          <span class="text-xl font-bold">⚡️ Reliable</span>
-        </div>
-        <div class="flex w-1/2 justify-around items-center">
-          <span class="text-xl font-bold">🚀 Fast</span>
-          <span class="text-xl font-bold">🔒 Secure</span>
-          <span class="text-xl font-bold">⚡️ Reliable</span>
-        </div>
-        <div class="flex w-1/2 justify-around items-center">
-          <span class="text-xl font-bold">🚀 Fast</span>
-          <span class="text-xl font-bold">🔒 Secure</span>
-          <span class="text-xl font-bold">⚡️ Reliable</span>
-        </div>
-        <div class="flex w-1/2 justify-around items-center">
-          <span class="text-xl font-bold">🚀 Fast</span>
-          <span class="text-xl font-bold">🔒 Secure</span>
-          <span class="text-xl font-bold">⚡️ Reliable</span>
+      <!-- marquee: 2 duplicates needed for seamless loop -->
+      <div class="relative flex overflow-x-hidden border-y border-zinc-800 bg-zinc-900/10 py-6 mt-12">
+        <!-- Edge Gradients -->
+        <div class="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-zinc-950 to-transparent z-10 pointer-events-none"></div>
+        <div class="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-zinc-950 to-transparent z-10 pointer-events-none"></div>
+
+        <!-- Track -->
+        <div
+          class="flex w-[200%] animate-[marquee-lr_15s_linear_infinite] hover:[animation-play-state:paused]"
+        >
+          <div class="flex w-1/2 justify-around items-center gap-4 shrink-0 px-4">
+            <span class="inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-900 border border-zinc-800/80 rounded-full text-xs sm:text-sm font-semibold tracking-widest font-mono text-emerald-400 shadow-md shadow-emerald-950/20">
+              {{ $t('home.marquee.fast') }}
+            </span>
+            <span class="inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-900 border border-zinc-800/80 rounded-full text-xs sm:text-sm font-semibold tracking-widest font-mono text-emerald-400 shadow-md shadow-emerald-950/20">
+              {{ $t('home.marquee.secure') }}
+            </span>
+            <span class="inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-900 border border-zinc-800/80 rounded-full text-xs sm:text-sm font-semibold tracking-widest font-mono text-emerald-400 shadow-md shadow-emerald-950/20">
+              {{ $t('home.marquee.reliable') }}
+            </span>
+          </div>
+
+          <div class="flex w-1/2 justify-around items-center gap-4 shrink-0 px-4">
+            <span class="inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-900 border border-zinc-800/80 rounded-full text-xs sm:text-sm font-semibold tracking-widest font-mono text-emerald-400 shadow-md shadow-emerald-950/20">
+              {{ $t('home.marquee.fast') }}
+            </span>
+            <span class="inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-900 border border-zinc-800/80 rounded-full text-xs sm:text-sm font-semibold tracking-widest font-mono text-emerald-400 shadow-md shadow-emerald-950/20">
+              {{ $t('home.marquee.secure') }}
+            </span>
+            <span class="inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-900 border border-zinc-800/80 rounded-full text-xs sm:text-sm font-semibold tracking-widest font-mono text-emerald-400 shadow-md shadow-emerald-950/20">
+              {{ $t('home.marquee.reliable') }}
+            </span>
+          </div>
         </div>
       </div>
     </section>
