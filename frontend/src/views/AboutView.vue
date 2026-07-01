@@ -82,10 +82,82 @@ import { RouterLink } from 'vue-router'
         </div>
       </div>
 
+      
       <!-- Core Directives Section -->
       <div class="border-t border-zinc-800/80 pt-12">
         <h2 class="text-2xl font-bold text-white tracking-tight mb-8">
           {{ $t('about.valuesTitle') }}
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <div
+            class="group border border-zinc-800 bg-zinc-900/40 p-6 rounded-2xl hover:border-emerald-500/30 hover:bg-zinc-900/60 transition-all duration-300 flex flex-col gap-4"
+          >
+            <div
+              class="flex items-center justify-center w-10 h-10 rounded-xl bg-zinc-955 border border-emerald-500/20 text-emerald-400 font-mono font-bold text-sm shrink-0 group-hover:scale-110 group-hover:border-emerald-400/50 transition-all duration-300"
+            >
+              01
+            </div>
+            <div>
+              <h3
+                class="text-lg font-bold text-zinc-100 mb-2 group-hover:text-emerald-400 transition-colors"
+              >
+                {{ $t('about.values.v1.title') }}
+              </h3>
+              <p class="text-zinc-400 text-sm leading-relaxed">
+                {{ $t('about.values.v1.desc') }}
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div
+            class="group border border-zinc-800 bg-zinc-900/40 p-6 rounded-2xl hover:border-emerald-500/30 hover:bg-zinc-900/60 transition-all duration-300 flex flex-col gap-4"
+          >
+            <div
+              class="flex items-center justify-center w-10 h-10 rounded-xl bg-zinc-955 border border-emerald-500/20 text-emerald-400 font-mono font-bold text-sm shrink-0 group-hover:scale-110 group-hover:border-emerald-400/50 transition-all duration-300"
+            >
+              02
+            </div>
+            <div>
+              <h3
+                class="text-lg font-bold text-zinc-100 mb-2 group-hover:text-emerald-400 transition-colors"
+              >
+                {{ $t('about.values.v2.title') }}
+              </h3>
+              <p class="text-zinc-400 text-sm leading-relaxed">
+                {{ $t('about.values.v2.desc') }}
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div
+            class="group border border-zinc-800 bg-zinc-900/40 p-6 rounded-2xl hover:border-emerald-500/30 hover:bg-zinc-900/60 transition-all duration-300 flex flex-col gap-4"
+          >
+            <div
+              class="flex items-center justify-center w-10 h-10 rounded-xl bg-zinc-955 border border-emerald-500/20 text-emerald-400 font-mono font-bold text-sm shrink-0 group-hover:scale-110 group-hover:border-emerald-400/50 transition-all duration-300"
+            >
+              03
+            </div>
+            <div>
+              <h3
+                class="text-lg font-bold text-zinc-100 mb-2 group-hover:text-emerald-400 transition-colors"
+              >
+                {{ $t('about.values.v3.title') }}
+              </h3>
+              <p class="text-zinc-400 text-sm leading-relaxed">
+                {{ $t('about.values.v3.desc') }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Core Directives Section -->
+      <div class="border-t border-zinc-800/80 pt-12">
+        <h2 class="text-2xl font-bold text-white tracking-tight mb-8">
+          {{ $t('about.credentials') }}
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -160,6 +160,7 @@ const messages = {
       storyBody1: "I began my journey at the intersection of bits and steel, fascinated by how software instructions materialize into hardware movements. Over the years, this curiosity led me to master Fusion 360 for mechanical CAD, C/C++ for real-time controllers, and Vue/Node.js for high-speed dashboard analytics.",
       storyBody2: "Whether configuring a 6-axis robotic arm, tuning obstacle avoidance loops for autonomous search-and-rescue, or deploying secure Spring Boot APIs, my approach remains performance-driven and reliable.",
       valuesTitle: "Core Directives",
+      credentials: "Credentials",
       values: {
         v1: {
           title: "Hardware Integration",

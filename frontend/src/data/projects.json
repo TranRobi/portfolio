@@ -4,11 +4,7 @@
     "titleKey": "projects.p1.title",
     "descKey": "projects.p1.desc",
     "tech": ["Lua", "Computer Vision", "Multi-Axis Kinematics"],
-    "images": [
-      "/projects/industrial-arm/p1.png",
-      "https://picsum.photos/seed/robot2/800/400",
-      "https://picsum.photos/seed/robot3/800/400"
-    ],
+    "images": ["/projects/industrial-arm/p1.png"],
     "featuresKey": "projects.p1.features",
     "site": []
   },
@@ -18,8 +14,10 @@
     "descKey": "projects.p2.desc",
     "tech": ["Fusion 360", "C++", "Sensor Fusion", "Rapid Prototyping"],
     "images": [
-      "https://picsum.photos/seed/auto1/800/400",
-      "https://picsum.photos/seed/auto2/800/400"
+      "/projects/robocup/rmrc.jfif",
+      "/projects/robocup/rmrc1.png",
+      "/projects/robocup/rmrc2.jpg",
+      "/projects/robocup/rmrc3.jfif"
     ],
     "featuresKey": "projects.p2.features",
     "site": ["https://tranrobi.github.io/KokanyCorporation_Updated_TDM/"]
@@ -29,10 +27,7 @@
     "titleKey": "projects.p3.title",
     "descKey": "projects.p3.desc",
     "tech": ["C", "Data structures", "Algorithms"],
-    "images": [
-      "https://picsum.photos/seed/code1/800/400",
-      "https://picsum.photos/seed/code2/800/400"
-    ],
+    "images": ["/projects/compressor/compressor.png"],
     "featuresKey": "projects.p3.features",
     "site": []
   },
@@ -41,10 +36,7 @@
     "titleKey": "projects.p4.title",
     "descKey": "projects.p4.desc",
     "tech": ["C++", "Data structures", "Algorithms"],
-    "images": [
-      "https://picsum.photos/seed/code1/800/400",
-      "https://picsum.photos/seed/code2/800/400"
-    ],
+    "images": [],
     "featuresKey": "projects.p4.features",
     "site": []
   },
@@ -53,10 +45,7 @@
     "titleKey": "projects.p5.title",
     "descKey": "projects.p5.desc",
     "tech": ["React", "Node", "MySQL database"],
-    "images": [
-      "https://picsum.photos/seed/code1/800/400",
-      "https://picsum.photos/seed/code2/800/400"
-    ],
+    "images": [],
     "featuresKey": "projects.p5.features",
     "site": ["https://github.com/zsoltiv/techbase_contact"]
   }
