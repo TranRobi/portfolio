@@ -6,7 +6,10 @@
     "tech": ["Lua", "Computer Vision", "Multi-Axis Kinematics"],
     "images": ["/projects/industrial-arm/p1.png"],
     "featuresKey": "projects.p1.features",
-    "site": []
+    "site": [],
+    "github": null,
+    "featured": true,
+    "year": 2024
   },
   {
     "id": 2,
@@ -20,7 +23,10 @@
       "/projects/robocup/rmrc3.jfif"
     ],
     "featuresKey": "projects.p2.features",
-    "site": ["https://tranrobi.github.io/KokanyCorporation_Updated_TDM/"]
+    "site": ["https://tranrobi.github.io/KokanyCorporation_Updated_TDM/"],
+    "github": "https://github.com/TranRobi/KokanyCorporation_Updated_TDM",
+    "featured": true,
+    "year": 2023
   },
   {
     "id": 3,
@@ -29,7 +35,10 @@
     "tech": ["C", "Data structures", "Algorithms"],
     "images": ["/projects/compressor/compressor.png"],
     "featuresKey": "projects.p3.features",
-    "site": []
+    "site": [],
+    "github": null,
+    "featured": true,
+    "year": 2023
   },
   {
     "id": 4,
@@ -38,7 +47,10 @@
     "tech": ["C++", "Data structures", "Algorithms"],
     "images": [],
     "featuresKey": "projects.p4.features",
-    "site": []
+    "site": [],
+    "github": null,
+    "featured": true,
+    "year": 2022
   },
   {
     "id": 5,
@@ -47,6 +59,9 @@
     "tech": ["React", "Node", "MySQL database"],
     "images": [],
     "featuresKey": "projects.p5.features",
-    "site": ["https://github.com/zsoltiv/techbase_contact"]
+    "site": ["https://github.com/zsoltiv/techbase_contact"],
+    "github": "https://github.com/zsoltiv/techbase_contact",
+    "featured": true,
+    "year": 2024
   }
 ]

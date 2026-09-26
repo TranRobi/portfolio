@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 
 const { locale } = useI18n()
+const route = useRoute()
 
 const isMenuOpen = ref(false)
 const scrollPercentage = ref(0)
+const isScrolled = ref(false)
 
 const toggleLanguage = () => {
   locale.value = locale.value === 'en' ? 'hu' : 'en'
@@ -15,11 +17,8 @@ const toggleLanguage = () => {
 const updateScrollProgress = () => {
   const scrollTop = window.scrollY || document.documentElement.scrollTop
   const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
-  if (docHeight > 0) {
-    scrollPercentage.value = (scrollTop / docHeight) * 100
-  } else {
-    scrollPercentage.value = 0
-  }
+  scrollPercentage.value = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
+  isScrolled.value = scrollTop > 20
 }
 
 onMounted(() => {
@@ -30,149 +29,137 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('scroll', updateScrollProgress)
 })
+
+const navLinks = [
+  { to: '/projects', labelKey: 'nav.architecture' },
+  { to: '/skills', labelKey: 'nav.matrix' },
+  { to: '/about', labelKey: 'nav.about' },
+  { to: '/contact', labelKey: 'nav.contact' },
+]
 </script>
 
 <template>
   <header
-    class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800 font-sans"
+    class="fixed top-0 left-0 right-0 z-50 font-sans transition-all duration-300"
+    :class="isScrolled
+      ? 'border-b border-white/[0.06] shadow-[0_4px_32px_rgba(0,0,0,0.5)]'
+      : 'border-b border-transparent'"
+    :style="isScrolled ? 'background: rgba(5,8,16,0.88); backdrop-filter: blur(20px);' : 'background: transparent;'"
   >
-    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <!-- Logo -->
       <RouterLink
         to="/"
-        class="font-mono text-emerald-400 font-bold tracking-widest text-sm uppercase hover:text-emerald-300 transition-colors"
+        class="flex items-center gap-2 font-mono font-bold tracking-widest text-sm uppercase transition-all duration-200 group"
+        style="color: #00d4ff;"
         @click="isMenuOpen = false"
       >
-        SYS.ADMIN //
+        <span
+          class="w-6 h-6 flex items-center justify-center rounded text-[10px] font-black"
+          style="background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(56,112,255,0.2)); border: 1px solid rgba(0,212,255,0.3);"
+        >&lt;/&gt;</span>
+        <span class="group-hover:text-white transition-colors">TranRobi</span>
       </RouterLink>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium">
         <RouterLink
-          to="/projects"
-          class="text-zinc-400 hover:text-zinc-100 transition-colors"
-          active-class="text-emerald-400"
+          v-for="link in navLinks"
+          :key="link.to"
+          :to="link.to"
+          class="nav-link"
+          :class="route.path === link.to ? 'active' : ''"
         >
-          {{ $t('nav.architecture') }}
+          {{ $t(link.labelKey) }}
         </RouterLink>
-        <RouterLink
-          to="/skills"
-          class="text-zinc-400 hover:text-zinc-100 transition-colors"
-          active-class="text-emerald-400"
-        >
-          {{ $t('nav.matrix') }}
-        </RouterLink>
-        <RouterLink
-          to="/about"
-          class="text-zinc-400 hover:text-zinc-100 transition-colors"
-          active-class="text-emerald-400"
-        >
-          {{ $t('nav.about') }}
-        </RouterLink>
-        <RouterLink
-          to="/contact"
-          class="text-zinc-400 hover:text-zinc-100 transition-colors"
-          active-class="text-emerald-400"
-        >
-          {{ $t('nav.contact') }}
-        </RouterLink>
+
         <a
           href="/resume.pdf"
           target="_blank"
-          class="text-zinc-400 hover:text-emerald-400 transition-colors font-mono"
+          class="nav-link"
         >
           {{ $t('nav.resume') }}
         </a>
 
+        <!-- Language Toggle -->
         <button
+          id="nav-lang-toggle"
           @click="toggleLanguage"
-          class="text-zinc-400 ml-4 px-2 py-1 border border-zinc-700 rounded text-xs font-mono hover:border-emerald-500 hover:text-emerald-400 transition-colors uppercase"
+          class="ml-1 px-3 py-1.5 rounded-lg font-mono text-xs uppercase font-bold transition-all duration-200"
+          style="background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); color: rgba(0,212,255,0.8);"
+          onmouseover="this.style.background='rgba(0,212,255,0.15)'; this.style.borderColor='rgba(0,212,255,0.4)';"
+          onmouseout="this.style.background='rgba(0,212,255,0.08)'; this.style.borderColor='rgba(0,212,255,0.2)';"
         >
           {{ locale }}
         </button>
       </nav>
 
-      <!-- Hamburger Menu Button -->
+      <!-- Hamburger -->
       <button
+        id="nav-hamburger"
         @click="isMenuOpen = !isMenuOpen"
-        class="flex md:hidden flex-col items-center justify-center w-8 h-8 rounded border border-zinc-800 hover:border-emerald-500/50 hover:text-emerald-400 text-zinc-400 transition-colors focus:outline-none"
+        class="flex md:hidden flex-col items-center justify-center w-9 h-9 rounded-xl transition-all duration-200 focus:outline-none"
+        style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);"
         aria-label="Toggle Menu"
       >
-        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path
-            v-if="!isMenuOpen"
-            fill-rule="evenodd"
-            d="M3 5h14a1 1 0 110 2H3a1 1 0 110-2zm0 5h14a1 1 0 110 2H3a1 1 0 110-2zm0 5h14a1 1 0 110 2H3a1 1 0 110-2z"
-            clip-rule="evenodd"
-          />
-          <path
-            v-else
-            fill-rule="evenodd"
-            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-            clip-rule="evenodd"
-          />
-        </svg>
+        <span
+          class="block w-4 h-0.5 transition-all duration-300"
+          :style="`background: ${isMenuOpen ? '#00d4ff' : 'rgba(226,232,240,0.6)'}; transform: ${isMenuOpen ? 'rotate(45deg) translateY(5px)' : 'none'};`"
+        />
+        <span
+          class="block w-4 h-0.5 mt-1 transition-all duration-300"
+          :style="`background: ${isMenuOpen ? '#00d4ff' : 'rgba(226,232,240,0.6)'}; opacity: ${isMenuOpen ? '0' : '1'};`"
+        />
+        <span
+          class="block w-4 h-0.5 mt-1 transition-all duration-300"
+          :style="`background: ${isMenuOpen ? '#00d4ff' : 'rgba(226,232,240,0.6)'}; transform: ${isMenuOpen ? 'rotate(-45deg) translateY(-9px)' : 'none'};`"
+        />
       </button>
     </div>
 
-    <!-- Mobile Navigation Drawer -->
+    <!-- Mobile Drawer -->
     <Transition
-      enter-active-class="transition duration-200 ease-out"
-      enter-from-class="opacity-0 -translate-y-4"
+      enter-active-class="transition-all duration-250 ease-out"
+      enter-from-class="opacity-0 -translate-y-3"
       enter-to-class="opacity-100 translate-y-0"
-      leave-active-class="transition duration-150 ease-in"
+      leave-active-class="transition-all duration-150 ease-in"
       leave-from-class="opacity-100 translate-y-0"
-      leave-to-class="opacity-0 -translate-y-4"
+      leave-to-class="opacity-0 -translate-y-3"
     >
       <div
         v-if="isMenuOpen"
-        class="absolute top-16 left-0 right-0 border-b border-zinc-800 bg-zinc-950/95 backdrop-blur-lg md:hidden flex flex-col p-6 gap-6 font-sans text-base font-semibold shadow-2xl"
+        class="absolute top-full left-0 right-0 md:hidden flex flex-col p-6 gap-5 font-sans text-sm font-semibold shadow-2xl"
+        style="background: rgba(5,8,16,0.95); backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255,255,255,0.06);"
       >
         <RouterLink
-          to="/projects"
-          class="text-zinc-400 hover:text-zinc-100 hover:translate-x-1 transition-all"
-          active-class="text-emerald-400"
+          v-for="link in navLinks"
+          :key="link.to"
+          :to="link.to"
+          class="transition-colors duration-200 flex items-center gap-2"
+          :style="route.path === link.to ? 'color: #00d4ff;' : 'color: rgba(226,232,240,0.6);'"
           @click="isMenuOpen = false"
         >
-          {{ $t('nav.architecture') }}
+          <span class="w-1 h-1 rounded-full" :style="`background: ${route.path === link.to ? '#00d4ff' : 'rgba(226,232,240,0.3)'};`" />
+          {{ $t(link.labelKey) }}
         </RouterLink>
-        <RouterLink
-          to="/skills"
-          class="text-zinc-400 hover:text-zinc-100 hover:translate-x-1 transition-all"
-          active-class="text-emerald-400"
-          @click="isMenuOpen = false"
-        >
-          {{ $t('nav.matrix') }}
-        </RouterLink>
-        <RouterLink
-          to="/about"
-          class="text-zinc-400 hover:text-zinc-100 hover:translate-x-1 transition-all"
-          active-class="text-emerald-400"
-          @click="isMenuOpen = false"
-        >
-          {{ $t('nav.about') }}
-        </RouterLink>
-        <RouterLink
-          to="/contact"
-          class="text-zinc-400 hover:text-zinc-100 hover:translate-x-1 transition-all"
-          active-class="text-emerald-400"
-          @click="isMenuOpen = false"
-        >
-          {{ $t('nav.contact') }}
-        </RouterLink>
+
         <a
           href="/resume.pdf"
           target="_blank"
-          class="text-zinc-400 hover:text-emerald-400 hover:translate-x-1 transition-all font-mono"
+          style="color: rgba(226,232,240,0.6);"
+          class="transition-colors duration-200 flex items-center gap-2"
           @click="isMenuOpen = false"
         >
+          <span class="w-1 h-1 rounded-full" style="background: rgba(226,232,240,0.3);" />
           {{ $t('nav.resume') }}
         </a>
 
-        <div class="border-t border-zinc-800 pt-4 flex items-center justify-between">
-          <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Language / Nyelv</span>
+        <div class="flex items-center justify-between pt-2" style="border-top: 1px solid rgba(255,255,255,0.06);">
+          <span class="text-xs font-mono uppercase tracking-widest" style="color: rgba(226,232,240,0.3);">Lang / Nyelv</span>
           <button
             @click="toggleLanguage"
-            class="text-zinc-400 px-3 py-1.5 border border-zinc-700 rounded font-mono hover:border-emerald-500 hover:text-emerald-400 transition-colors uppercase text-sm"
+            class="px-3 py-1.5 rounded-lg text-xs font-mono uppercase font-bold transition-all duration-200"
+            style="background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); color: rgba(0,212,255,0.8);"
           >
             {{ locale }}
           </button>
@@ -180,10 +167,14 @@ onUnmounted(() => {
       </div>
     </Transition>
 
-    <!-- Scroll Progress Indicator Bar -->
+    <!-- Scroll Progress Bar -->
     <div
-      class="absolute bottom-0 left-0 h-[2px] bg-emerald-500 shadow-[0_0_8px_#10b981] transition-all duration-75 ease-out"
-      :style="{ width: scrollPercentage + '%' }"
-    ></div>
+      class="absolute bottom-0 left-0 h-[2px] transition-all duration-75 ease-out"
+      :style="{
+        width: scrollPercentage + '%',
+        background: 'linear-gradient(90deg, #00d4ff, #3870ff)',
+        boxShadow: '0 0 8px rgba(0,212,255,0.6)'
+      }"
+    />
   </header>
 </template>

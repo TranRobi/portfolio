@@ -1,227 +1,154 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+import { useReveal } from '@/composables/useReveal'
+
+useReveal()
 </script>
 
 <template>
-  <main
-    class="min-h-screen bg-zinc-950 text-zinc-100 p-6 md:p-12 font-sans selection:bg-emerald-500 selection:text-white"
-  >
-    <div class="max-w-5xl mx-auto pt-10">
-      <!-- Back Link -->
+  <main class="min-h-screen text-slate-100 font-sans">
+    <div class="max-w-6xl mx-auto px-6 pt-12 pb-20">
+
+      <!-- Back -->
       <RouterLink
         to="/"
-        class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-mono text-sm mb-10 transition-colors"
+        class="reveal inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest mb-10 transition-all duration-200 group"
+        style="color: rgba(0,212,255,0.6);"
       >
-        <span aria-hidden="true">←</span> {{ $t('about.returnMain') }}
+        <svg class="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        {{ $t('about.returnMain') }}
       </RouterLink>
 
       <!-- Section Header -->
-      <p class="text-emerald-400 font-mono text-sm uppercase tracking-widest mb-3">
-        {{ $t('about.label') }}
-      </p>
-      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">{{ $t('about.title') }}</h1>
-      <p class="text-zinc-400 text-lg mb-12 max-w-3xl leading-relaxed">
+      <div class="reveal mb-3" style="animation-delay: 50ms;">
+        <p class="section-label mb-3">{{ $t('about.label') }}</p>
+        <h1 class="text-4xl md:text-5xl font-black tracking-tight text-white">{{ $t('about.title') }}</h1>
+      </div>
+      <p class="reveal text-base max-w-3xl mb-14 leading-relaxed" style="color: rgba(226,232,240,0.5); animation-delay: 100ms;">
         {{ $t('about.subtitle') }}
       </p>
 
-      <!-- Dashboard Split Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-start mb-16">
-        <!-- Left Side: System Metrics Card (2 Cols) -->
-        <div
-          class="md:col-span-2 bg-zinc-900/40 border border-zinc-800 p-6 rounded-2xl shadow-xl flex flex-col gap-6"
-        >
-          <h2
-            class="text-base font-mono uppercase tracking-wider text-emerald-400 border-b border-zinc-800 pb-3 flex items-center gap-2"
-          >
-            <span class="relative flex h-2 w-2">
-              <span
-                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"
-              ></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
+      <!-- ═══ Info grid ═══ -->
+      <div class="reveal grid grid-cols-1 md:grid-cols-5 gap-6 items-start mb-16" style="animation-delay: 150ms;">
+
+        <!-- Left: System Parameters -->
+        <div class="md:col-span-2 glass-card p-6 flex flex-col gap-6">
+          <h2 class="text-xs font-mono uppercase tracking-widest flex items-center gap-2.5" style="color: rgba(0,212,255,0.8); border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 12px;">
+            <span class="pulse-dot" />
             {{ $t('about.meta.title') }}
           </h2>
 
           <div class="space-y-4 font-mono text-sm">
-            <div class="flex flex-col gap-1 border-b border-zinc-900 pb-2">
-              <span class="text-zinc-500 text-xs uppercase">{{ $t('about.meta.role') }}</span>
-              <span class="text-zinc-200 font-semibold">{{ $t('about.meta.roleVal') }}</span>
-            </div>
-
-            <div class="flex flex-col gap-1 border-b border-zinc-900 pb-2">
-              <span class="text-zinc-500 text-xs uppercase">{{ $t('about.meta.focus') }}</span>
-              <span class="text-zinc-200 font-semibold">{{ $t('about.meta.focusVal') }}</span>
-            </div>
-
-            <div class="flex flex-col gap-1 border-b border-zinc-900 pb-2">
-              <span class="text-zinc-500 text-xs uppercase">{{ $t('about.meta.location') }}</span>
-              <span class="text-zinc-200 font-semibold">{{ $t('about.meta.locationVal') }}</span>
-            </div>
-
-            <div class="flex flex-col gap-1">
-              <span class="text-zinc-500 text-xs uppercase">{{ $t('about.meta.status') }}</span>
-              <span class="text-emerald-400 font-bold flex items-center gap-1.5">
-                <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full inline-block"></span>
-                {{ $t('about.meta.statusVal') }}
+            <div
+              v-for="row in [
+                { key: $t('about.meta.role'), val: $t('about.meta.roleVal'), accent: false },
+                { key: $t('about.meta.focus'), val: $t('about.meta.focusVal'), accent: false },
+                { key: $t('about.meta.location'), val: $t('about.meta.locationVal'), accent: false },
+                { key: $t('about.meta.status'), val: $t('about.meta.statusVal'), accent: true },
+              ]"
+              :key="row.key"
+              class="flex flex-col gap-1"
+              style="border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom: 12px;"
+            >
+              <span class="text-[10px] uppercase tracking-widest" style="color: rgba(226,232,240,0.3);">{{ row.key }}</span>
+              <span
+                class="font-semibold text-sm flex items-center gap-1.5"
+                :style="row.accent ? 'color: #00d4ff;' : 'color: rgba(226,232,240,0.85);'"
+              >
+                <span
+                  v-if="row.accent"
+                  class="w-1.5 h-1.5 rounded-full shrink-0"
+                  style="background: #00d4ff; box-shadow: 0 0 6px #00d4ff;"
+                />
+                {{ row.val }}
               </span>
             </div>
           </div>
+
+          <!-- Social links -->
+          <div class="flex gap-3 pt-2">
+            <a
+              href="https://github.com/TranRobi"
+              target="_blank"
+              rel="noopener noreferrer"
+              id="about-github-link"
+              class="flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-200"
+              style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);"
+              onmouseover="this.style.borderColor='rgba(0,212,255,0.35)'; this.style.color='#00d4ff';"
+              onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.color='rgba(226,232,240,0.5)';"
+            >
+              <svg class="w-4 h-4" fill="currentColor" style="color: rgba(226,232,240,0.5);" viewBox="0 0 24 24">
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.565 21.796 24 17.302 24 12 24 5.373 18.627 0 12 0z"/>
+              </svg>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/dat-tran-duy-031541211/"
+              target="_blank"
+              rel="noopener noreferrer"
+              id="about-linkedin-link"
+              class="flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-200"
+              style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);"
+              onmouseover="this.style.borderColor='rgba(0,212,255,0.35)'; this.style.color='#00d4ff';"
+              onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.color='rgba(226,232,240,0.5)';"
+            >
+              <svg class="w-4 h-4" fill="currentColor" style="color: rgba(226,232,240,0.5);" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+            </a>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              id="about-resume-link"
+              class="flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-200"
+              style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);"
+              onmouseover="this.style.borderColor='rgba(0,212,255,0.35)'; this.style.color='#00d4ff';"
+              onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.color='rgba(226,232,240,0.5)';"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" style="color: rgba(226,232,240,0.5);" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+            </a>
+          </div>
         </div>
 
-        <!-- Right Side: Narrative (3 Cols) -->
+        <!-- Right: Story -->
+        <div class="md:col-span-3 glass-card p-7 md:p-9">
+          <h2 class="text-2xl font-bold text-white mb-5">{{ $t('about.storyTitle') }}</h2>
+          <div class="space-y-4">
+            <p class="text-sm leading-relaxed" style="color: rgba(226,232,240,0.65);">{{ $t('about.storyBody1') }}</p>
+            <p class="text-sm leading-relaxed" style="color: rgba(226,232,240,0.65);">{{ $t('about.storyBody2') }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ Core Values ═══ -->
+      <div class="reveal mb-8" style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 48px; animation-delay: 200ms;">
+        <p class="section-label mb-2">// Core</p>
+        <h2 class="text-2xl font-bold text-white">{{ $t('about.valuesTitle') }}</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16">
         <div
-          class="md:col-span-3 space-y-6 bg-zinc-900/20 border border-zinc-900/60 p-6 md:p-8 rounded-2xl"
+          v-for="(value, idx) in [
+            { t: $t('about.values.v1.title'), d: $t('about.values.v1.desc') },
+            { t: $t('about.values.v2.title'), d: $t('about.values.v2.desc') },
+            { t: $t('about.values.v3.title'), d: $t('about.values.v3.desc') },
+          ]"
+          :key="idx"
+          class="reveal glass-card p-6 group flex flex-col gap-4"
+          :style="`animation-delay: ${220 + idx * 80}ms;`"
         >
-          <h2 class="text-2xl font-bold text-white tracking-tight">{{ $t('about.storyTitle') }}</h2>
-          <p class="text-zinc-300 leading-relaxed text-sm sm:text-base">
-            {{ $t('about.storyBody1') }}
-          </p>
-          <p class="text-zinc-300 leading-relaxed text-sm sm:text-base">
-            {{ $t('about.storyBody2') }}
-          </p>
-        </div>
-      </div>
-
-      
-      <!-- Core Directives Section -->
-      <div class="border-t border-zinc-800/80 pt-12">
-        <h2 class="text-2xl font-bold text-white tracking-tight mb-8">
-          {{ $t('about.valuesTitle') }}
-        </h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <!-- Card 1 -->
           <div
-            class="group border border-zinc-800 bg-zinc-900/40 p-6 rounded-2xl hover:border-emerald-500/30 hover:bg-zinc-900/60 transition-all duration-300 flex flex-col gap-4"
+            class="w-10 h-10 flex items-center justify-center rounded-xl font-mono font-black text-sm transition-all duration-300 group-hover:scale-110"
+            style="background: linear-gradient(135deg, rgba(0,212,255,0.12), rgba(56,112,255,0.08)); border: 1px solid rgba(0,212,255,0.2); color: #00d4ff;"
           >
-            <div
-              class="flex items-center justify-center w-10 h-10 rounded-xl bg-zinc-955 border border-emerald-500/20 text-emerald-400 font-mono font-bold text-sm shrink-0 group-hover:scale-110 group-hover:border-emerald-400/50 transition-all duration-300"
-            >
-              01
-            </div>
-            <div>
-              <h3
-                class="text-lg font-bold text-zinc-100 mb-2 group-hover:text-emerald-400 transition-colors"
-              >
-                {{ $t('about.values.v1.title') }}
-              </h3>
-              <p class="text-zinc-400 text-sm leading-relaxed">
-                {{ $t('about.values.v1.desc') }}
-              </p>
-            </div>
+            {{ String(idx + 1).padStart(2, '0') }}
           </div>
-
-          <!-- Card 2 -->
-          <div
-            class="group border border-zinc-800 bg-zinc-900/40 p-6 rounded-2xl hover:border-emerald-500/30 hover:bg-zinc-900/60 transition-all duration-300 flex flex-col gap-4"
-          >
-            <div
-              class="flex items-center justify-center w-10 h-10 rounded-xl bg-zinc-955 border border-emerald-500/20 text-emerald-400 font-mono font-bold text-sm shrink-0 group-hover:scale-110 group-hover:border-emerald-400/50 transition-all duration-300"
-            >
-              02
-            </div>
-            <div>
-              <h3
-                class="text-lg font-bold text-zinc-100 mb-2 group-hover:text-emerald-400 transition-colors"
-              >
-                {{ $t('about.values.v2.title') }}
-              </h3>
-              <p class="text-zinc-400 text-sm leading-relaxed">
-                {{ $t('about.values.v2.desc') }}
-              </p>
-            </div>
-          </div>
-
-          <!-- Card 3 -->
-          <div
-            class="group border border-zinc-800 bg-zinc-900/40 p-6 rounded-2xl hover:border-emerald-500/30 hover:bg-zinc-900/60 transition-all duration-300 flex flex-col gap-4"
-          >
-            <div
-              class="flex items-center justify-center w-10 h-10 rounded-xl bg-zinc-955 border border-emerald-500/20 text-emerald-400 font-mono font-bold text-sm shrink-0 group-hover:scale-110 group-hover:border-emerald-400/50 transition-all duration-300"
-            >
-              03
-            </div>
-            <div>
-              <h3
-                class="text-lg font-bold text-zinc-100 mb-2 group-hover:text-emerald-400 transition-colors"
-              >
-                {{ $t('about.values.v3.title') }}
-              </h3>
-              <p class="text-zinc-400 text-sm leading-relaxed">
-                {{ $t('about.values.v3.desc') }}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Core Directives Section -->
-      <div class="border-t border-zinc-800/80 pt-12">
-        <h2 class="text-2xl font-bold text-white tracking-tight mb-8">
-          {{ $t('about.credentials') }}
-        </h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <!-- Card 1 -->
-          <div
-            class="group border border-zinc-800 bg-zinc-900/40 p-6 rounded-2xl hover:border-emerald-500/30 hover:bg-zinc-900/60 transition-all duration-300 flex flex-col gap-4"
-          >
-            <div
-              class="flex items-center justify-center w-10 h-10 rounded-xl bg-zinc-955 border border-emerald-500/20 text-emerald-400 font-mono font-bold text-sm shrink-0 group-hover:scale-110 group-hover:border-emerald-400/50 transition-all duration-300"
-            >
-              01
-            </div>
-            <div>
-              <h3
-                class="text-lg font-bold text-zinc-100 mb-2 group-hover:text-emerald-400 transition-colors"
-              >
-                {{ $t('about.values.v1.title') }}
-              </h3>
-              <p class="text-zinc-400 text-sm leading-relaxed">
-                {{ $t('about.values.v1.desc') }}
-              </p>
-            </div>
-          </div>
-
-          <!-- Card 2 -->
-          <div
-            class="group border border-zinc-800 bg-zinc-900/40 p-6 rounded-2xl hover:border-emerald-500/30 hover:bg-zinc-900/60 transition-all duration-300 flex flex-col gap-4"
-          >
-            <div
-              class="flex items-center justify-center w-10 h-10 rounded-xl bg-zinc-955 border border-emerald-500/20 text-emerald-400 font-mono font-bold text-sm shrink-0 group-hover:scale-110 group-hover:border-emerald-400/50 transition-all duration-300"
-            >
-              02
-            </div>
-            <div>
-              <h3
-                class="text-lg font-bold text-zinc-100 mb-2 group-hover:text-emerald-400 transition-colors"
-              >
-                {{ $t('about.values.v2.title') }}
-              </h3>
-              <p class="text-zinc-400 text-sm leading-relaxed">
-                {{ $t('about.values.v2.desc') }}
-              </p>
-            </div>
-          </div>
-
-          <!-- Card 3 -->
-          <div
-            class="group border border-zinc-800 bg-zinc-900/40 p-6 rounded-2xl hover:border-emerald-500/30 hover:bg-zinc-900/60 transition-all duration-300 flex flex-col gap-4"
-          >
-            <div
-              class="flex items-center justify-center w-10 h-10 rounded-xl bg-zinc-955 border border-emerald-500/20 text-emerald-400 font-mono font-bold text-sm shrink-0 group-hover:scale-110 group-hover:border-emerald-400/50 transition-all duration-300"
-            >
-              03
-            </div>
-            <div>
-              <h3
-                class="text-lg font-bold text-zinc-100 mb-2 group-hover:text-emerald-400 transition-colors"
-              >
-                {{ $t('about.values.v3.title') }}
-              </h3>
-              <p class="text-zinc-400 text-sm leading-relaxed">
-                {{ $t('about.values.v3.desc') }}
-              </p>
-            </div>
+          <div>
+            <h3 class="text-base font-bold text-white mb-2 group-hover:text-cyan transition-colors">{{ value.t }}</h3>
+            <p class="text-sm leading-relaxed" style="color: rgba(226,232,240,0.5);">{{ value.d }}</p>
           </div>
         </div>
       </div>
