@@ -113,11 +113,11 @@ onMounted(() => {
           <div class="flex items-center gap-3 mb-5">
             <div
               class="w-10 h-10 flex items-center justify-center rounded-xl shrink-0 transition-transform duration-300 group-hover:scale-110"
-              :style="`background: ${categoryColors[idx % categoryColors.length].bg}; border: 1px solid ${categoryColors[idx % categoryColors.length].border};`"
+              :style="`background: ${categoryColors[idx % categoryColors.length]!.bg}; border: 1px solid ${categoryColors[idx % categoryColors.length]!.border};`"
             >
               <span
                 class="w-5 h-5 block"
-                :style="`color: ${categoryColors[idx % categoryColors.length].icon};`"
+                :style="`color: ${categoryColors[idx % categoryColors.length]!.icon};`"
                 v-html="categoryIcons[idx % categoryIcons.length]"
               />
             </div>
@@ -136,7 +136,7 @@ onMounted(() => {
             >
               <div class="flex items-center justify-between">
                 <span class="text-xs font-mono" style="color: rgba(226,232,240,0.75);">{{ rt(skill) }}</span>
-                <span class="text-[10px] font-mono" :style="`color: ${categoryColors[idx % categoryColors.length].icon}; opacity: 0.7;`">
+                <span class="text-[10px] font-mono" :style="`color: ${categoryColors[idx % categoryColors.length]!.icon}; opacity: 0.7;`">
                   {{ getProficiency(rt(skill)) }}%
                 </span>
               </div>
@@ -145,8 +145,8 @@ onMounted(() => {
                   class="skill-bar-fill"
                   :style="`
                     width: ${barsVisible ? getProficiency(rt(skill)) : 0}%;
-                    background: linear-gradient(90deg, ${categoryColors[idx % categoryColors.length].icon.replace('0.9', '0.9')}, ${categoryColors[idx % categoryColors.length].icon.replace('0.9', '0.5')});
-                    box-shadow: 0 0 8px ${categoryColors[idx % categoryColors.length].icon.replace('0.9', '0.4')};
+                    background: linear-gradient(90deg, ${categoryColors[idx % categoryColors.length]!.icon.replace('0.9', '0.9')}, ${categoryColors[idx % categoryColors.length]!.icon.replace('0.9', '0.5')});
+                    box-shadow: 0 0 8px ${categoryColors[idx % categoryColors.length]!.icon.replace('0.9', '0.4')};
                   `"
                 />
               </div>
