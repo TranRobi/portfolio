@@ -58,7 +58,7 @@ const reset = () => {
         <svg class="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
         </svg>
-        Return to Main System
+        {{ $t('contact.returnMain') }}
       </RouterLink>
 
       <!-- Two-column layout -->
@@ -67,10 +67,10 @@ const reset = () => {
         <!-- Left: Info column -->
         <div class="lg:col-span-2">
           <div class="reveal" style="animation-delay: 50ms;">
-            <p class="section-label mb-3">// Open Channel</p>
-            <h1 class="text-4xl md:text-5xl font-black tracking-tight text-white mb-5">Contact</h1>
+            <p class="section-label mb-3">{{ $t('contact.openChannel') }}</p>
+            <h1 class="text-4xl md:text-5xl font-black tracking-tight text-white mb-5">{{ $t('contact.title') }}</h1>
             <p class="text-sm leading-relaxed mb-8" style="color: rgba(226,232,240,0.5);">
-              Have a project, collaboration, or question? Drop a message and I'll get back to you as soon as possible.
+              {{ $t('contact.subtitle') }}
             </p>
           </div>
 
@@ -139,8 +139,8 @@ const reset = () => {
                 </svg>
               </div>
               <div>
-                <p class="text-sm font-semibold text-white group-hover:text-cyan transition-colors">Resume / CV</p>
-                <p class="text-xs font-mono" style="color: rgba(226,232,240,0.4);">Download PDF</p>
+                <p class="text-sm font-semibold text-white group-hover:text-cyan transition-colors">{{ $t('contact.resumeLabel') }}</p>
+                <p class="text-xs font-mono" style="color: rgba(226,232,240,0.4);">{{ $t('contact.resumeDesc') }}</p>
               </div>
               <svg class="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 transition-all duration-200" fill="none" stroke="#00d4ff" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -172,15 +172,15 @@ const reset = () => {
                 </svg>
               </div>
               <div>
-                <p class="text-xl font-bold text-white mb-1">Message transmitted.</p>
-                <p class="text-sm" style="color: rgba(226,232,240,0.5);">I'll get back to you soon.</p>
+                <p class="text-xl font-bold text-white mb-1">{{ $t('contact.successTitle') }}</p>
+                <p class="text-sm" style="color: rgba(226,232,240,0.5);">{{ $t('contact.successSubtitle') }}</p>
               </div>
               <button
                 @click="reset"
                 id="contact-send-another"
                 class="btn-secondary text-sm mt-2"
               >
-                Send another
+                {{ $t('contact.btnSendAnother') }}
               </button>
             </div>
           </Transition>
@@ -198,44 +198,44 @@ const reset = () => {
               style="animation-delay: 80ms;"
               novalidate
             >
-              <h2 class="text-lg font-bold text-white mb-1">Send a Message</h2>
-              <p class="text-xs font-mono mb-5" style="color: rgba(226,232,240,0.35); border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 16px;">All fields required.</p>
+              <h2 class="text-lg font-bold text-white mb-1">{{ $t('contact.formTitle') }}</h2>
+              <p class="text-xs font-mono mb-5" style="color: rgba(226,232,240,0.35); border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 16px;">{{ $t('contact.formRequired') }}</p>
 
               <!-- Name -->
               <div class="flex flex-col gap-2">
-                <label for="contact-name" class="text-[10px] font-mono uppercase tracking-widest" style="color: rgba(226,232,240,0.4);">Name</label>
+                <label for="contact-name" class="text-[10px] font-mono uppercase tracking-widest" style="color: rgba(226,232,240,0.4);">{{ $t('contact.labelName') }}</label>
                 <input
                   id="contact-name"
                   v-model="form.name"
                   type="text"
                   required
-                  placeholder="Your name"
+                  :placeholder="$t('contact.placeholderName')"
                   class="form-input"
                 />
               </div>
 
               <!-- Email -->
               <div class="flex flex-col gap-2">
-                <label for="contact-email" class="text-[10px] font-mono uppercase tracking-widest" style="color: rgba(226,232,240,0.4);">Email</label>
+                <label for="contact-email" class="text-[10px] font-mono uppercase tracking-widest" style="color: rgba(226,232,240,0.4);">{{ $t('contact.labelEmail') }}</label>
                 <input
                   id="contact-email"
                   v-model="form.email"
                   type="email"
                   required
-                  placeholder="your@email.com"
+                  :placeholder="$t('contact.placeholderEmail')"
                   class="form-input"
                 />
               </div>
 
               <!-- Message -->
               <div class="flex flex-col gap-2">
-                <label for="contact-message" class="text-[10px] font-mono uppercase tracking-widest" style="color: rgba(226,232,240,0.4);">Message</label>
+                <label for="contact-message" class="text-[10px] font-mono uppercase tracking-widest" style="color: rgba(226,232,240,0.4);">{{ $t('contact.labelMessage') }}</label>
                 <textarea
                   id="contact-message"
                   v-model="form.message"
                   required
                   rows="5"
-                  placeholder="Describe your project or question..."
+                  :placeholder="$t('contact.placeholderMessage')"
                   class="form-input resize-none"
                 />
               </div>
@@ -247,7 +247,7 @@ const reset = () => {
                 enter-to-class="opacity-100 translate-y-0"
               >
                 <p v-if="status === 'error'" class="text-xs font-mono" style="color: rgba(239,68,68,0.9);">
-                  ⚠ Transmission failed: {{ errorMsg }}. Try again or reach out via LinkedIn.
+                  {{ $t('contact.error', { error: errorMsg }) }}
                 </p>
               </Transition>
 
@@ -270,7 +270,7 @@ const reset = () => {
                   <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
                   <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                 </svg>
-                <span>{{ status === 'sending' ? 'Transmitting...' : 'Send Message' }}</span>
+                <span>{{ status === 'sending' ? $t('contact.btnSending') : $t('contact.btnSend') }}</span>
                 <svg
                   v-if="status !== 'sending'"
                   class="w-4 h-4 group-hover:translate-x-1 transition-transform"

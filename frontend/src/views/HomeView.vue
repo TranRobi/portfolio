@@ -95,9 +95,9 @@ onMounted(() => {
       <!-- Stat row -->
       <div class="reveal flex flex-wrap gap-8" style="animation-delay: 400ms;">
         <div v-for="stat in [
-          { value: '5+', label: 'Projects Built' },
-          { value: '2yr', label: 'RoboCup Competition' },
-          { value: '5+', label: 'Languages' },
+          { value: '5+', label: $t('home.stats.projects') },
+          { value: '2yr', label: $t('home.stats.robocup') },
+          { value: '5+', label: $t('home.stats.languages') },
         ]" :key="stat.label" class="flex flex-col">
           <span class="text-3xl font-black font-mono gradient-text-cyan">{{ stat.value }}</span>
           <span class="text-xs font-mono uppercase tracking-widest mt-0.5" style="color: rgba(226,232,240,0.4);">{{ stat.label }}</span>
@@ -108,8 +108,8 @@ onMounted(() => {
     <!-- ═══════════════════════ SPECIALIZATION CARDS ═══════════════════════ -->
     <section class="max-w-6xl mx-auto px-6 pb-20">
       <div class="reveal mb-10" style="animation-delay: 0ms;">
-        <p class="section-label mb-2">Core Expertise</p>
-        <h2 class="text-2xl font-bold text-white">What I Build</h2>
+        <p class="section-label mb-2">{{ $t('home.expertiseLabel') }}</p>
+        <h2 class="text-2xl font-bold text-white">{{ $t('home.expertiseTitle') }}</h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -200,7 +200,7 @@ onMounted(() => {
       >
         <div class="flex w-1/2 justify-around items-center gap-6 shrink-0 px-6">
           <span
-            v-for="item in [$t('home.marquee.fast'), $t('home.marquee.secure'), $t('home.marquee.reliable'), 'Performance-Oriented', 'Systems Thinker']"
+            v-for="item in [$t('home.marquee.fast'), $t('home.marquee.secure'), $t('home.marquee.reliable'), $t('home.marquee.performance'), $t('home.marquee.systemsThinker')]"
             :key="item"
             class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full text-xs font-semibold tracking-widest font-mono whitespace-nowrap"
             style="background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.15); color: rgba(0,212,255,0.8);"
@@ -211,8 +211,8 @@ onMounted(() => {
         </div>
         <div class="flex w-1/2 justify-around items-center gap-6 shrink-0 px-6" aria-hidden="true">
           <span
-            v-for="item in [$t('home.marquee.fast'), $t('home.marquee.secure'), $t('home.marquee.reliable'), 'Performance-Oriented', 'Systems Thinker']"
-            :key="item"
+            v-for="item in [$t('home.marquee.fast'), $t('home.marquee.secure'), $t('home.marquee.reliable'), $t('home.marquee.performance'), $t('home.marquee.systemsThinker')]"
+            :key="item + '-dup'"
             class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full text-xs font-semibold tracking-widest font-mono whitespace-nowrap"
             style="background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.15); color: rgba(0,212,255,0.8);"
           >
@@ -231,13 +231,13 @@ onMounted(() => {
       >
         <div class="absolute inset-0 dot-grid opacity-30 pointer-events-none" />
         <h2 class="text-3xl md:text-4xl font-black text-white mb-4 relative z-10">
-          Let's build something <span class="gradient-text">exceptional</span> together.
+          {{ $t('home.ctaTitle') }}
         </h2>
         <p class="text-base mb-8 max-w-xl mx-auto relative z-10" style="color: rgba(226,232,240,0.5);">
-          Open to full-time roles, internships, and interesting collaborations. Currently based in Hungary.
+          {{ $t('home.ctaSubtitle') }}
         </p>
         <RouterLink to="/contact" id="cta-contact-btn" class="btn-primary inline-flex relative z-10">
-          Get In Touch
+          {{ $t('home.ctaBtn') }}
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
           </svg>
