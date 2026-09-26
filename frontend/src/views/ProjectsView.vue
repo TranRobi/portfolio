@@ -113,7 +113,7 @@ const formatDate = (iso: string) => {
               : 'color: rgba(226,232,240,0.4); border: 1px solid transparent;'
           "
         >
-          {{ $t('projects.tabFeatured') }}
+          Featured
         </button>
         <button
           id="tab-github"
@@ -188,12 +188,12 @@ const formatDate = (iso: string) => {
           </svg>
           <div>
             <p class="text-sm font-mono font-semibold" style="color: rgba(239, 68, 68, 0.9)">
-              {{ $t('projects.ghError') }}
+              Failed to load GitHub repos
             </p>
             <p class="text-xs mt-1" style="color: rgba(226, 232, 240, 0.4)">{{ ghError }}</p>
           </div>
           <button @click="clearCacheAndReload" class="btn-secondary text-xs font-mono">
-            {{ $t('projects.ghClearRetry') }}
+            Clear cache & retry
           </button>
         </div>
 
@@ -211,13 +211,13 @@ const formatDate = (iso: string) => {
             />
           </svg>
           <div>
-            <p class="text-sm font-semibold text-white">{{ $t('projects.ghEmpty') }}</p>
+            <p class="text-sm font-semibold text-white">No public repos found</p>
             <p class="text-xs mt-1" style="color: rgba(226, 232, 240, 0.4)">
-              {{ $t('projects.ghEmptyDesc') }}
+              GitHub may be rate-limiting. Try again in a moment.
             </p>
           </div>
           <button @click="clearCacheAndReload" class="btn-secondary text-xs font-mono">
-            {{ $t('projects.ghRetry') }}
+            Retry
           </button>
         </div>
 
@@ -337,7 +337,7 @@ const formatDate = (iso: string) => {
               class="text-sm font-semibold group-hover:text-cyan transition-colors"
               style="color: rgba(226, 232, 240, 0.4)"
             >
-              {{ $t('projects.ghViewAll') }}
+              View all on GitHub
             </p>
           </a>
         </div>
